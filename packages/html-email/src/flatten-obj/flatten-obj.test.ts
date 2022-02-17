@@ -2,7 +2,7 @@ import { assert, AssertionError } from 'chai';
 import { flattenObj } from './flatten-obj';
 
 describe('Testing "./flatten-obj"', () => {
-    it('Case 01.', () => {
+    it('Object 01.', () => {
         const out = flattenObj({
             text: 'jajaja',
             value: 666
@@ -17,7 +17,7 @@ describe('Testing "./flatten-obj"', () => {
         assert.strictEqual(out[1].value, 666);
     });
 
-    it('Case 02.', () => {
+    it('Object 02.', () => {
         const out = flattenObj({
             alpha: {
                 a: 66,

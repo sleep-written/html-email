@@ -1,12 +1,20 @@
-import * as htmlParser from 'node-html-parser';
-import { readFile } from 'fs/promises';
 import { resolve } from 'path';
+import { readFile } from 'fs/promises';
+import * as htmlParser from 'node-html-parser';
 
-import { NotLoadedTemplateError } from './not-loaded-template-error';
-import { flattenObj, Literal } from '../flatten-obj';
 import { CssTemplate } from '../css-template';
+import { flattenObj, Literal } from '../flatten-obj';
 
 export class HtmlTemplate<T extends Literal> {
+    static async load<T extends Literal>(
+        path: string,
+        encoding?: BufferEncoding
+    ): Promise<HtmlTemplate<T>> {
+        const o = new HtmlTemplate<T>(path, encoding);
+        await o._load();
+        return o;
+    }
+
     private _path: string;
     get path(): string {
         return this._path;
@@ -19,23 +27,15 @@ export class HtmlTemplate<T extends Literal> {
 
     private _template!: string;
     get template(): string {
-        if (typeof this._template === 'undefined') {
-            throw new NotLoadedTemplateError(this._path);
-        } else {
-            return this._template;
-        }
+        return this._template;
     }
 
     private _styles!: CssTemplate[];
     get styles(): CssTemplate[] {
-        if (typeof this._styles === 'undefined') {
-            throw new NotLoadedTemplateError(this._path);
-        } else {
-            return this._styles;
-        }
+        return this._styles;
     }
     
-    constructor(path: string, encoding?: BufferEncoding) {
+    private constructor(path: string, encoding?: BufferEncoding) {
         this._path = resolve(path);
         this._encoding = encoding ?? 'utf-8';
     }
@@ -49,7 +49,7 @@ export class HtmlTemplate<T extends Literal> {
         return new RegExp(patt, 'gi');
     }
 
-    async load(): Promise<void> {
+    private async _load(): Promise<void> {
         // Get raw html
         this._template = await readFile(this._path, this._encoding);
 
@@ -78,14 +78,6 @@ export class HtmlTemplate<T extends Literal> {
     }
 
     parse(data: T): string {
-        // Check the state
-        if (
-            (typeof this._template === 'undefined') ||
-            (typeof this._styles === 'undefined')
-        ) {
-            throw new NotLoadedTemplateError(this._path);
-        }
-
         // Replace values
         let html = this._template;
         const flat = flattenObj(data);
@@ -94,7 +86,7 @@ export class HtmlTemplate<T extends Literal> {
             html = html.replace(regexp, `${item.value}`);
         }
 
-        // Render css
+        // Render CSS
         const node = htmlParser.parse(html);
         for (const style of this._styles) {
             style.apply(node);

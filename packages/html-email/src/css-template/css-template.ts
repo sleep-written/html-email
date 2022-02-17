@@ -1,9 +1,9 @@
-import { HTMLElement } from 'node-html-parser';
-import { readFile } from 'fs/promises';
 import { resolve } from 'path';
+import { readFile } from 'fs/promises';
+import { HTMLElement } from 'node-html-parser';
 
-import { cssNormalize } from './css-normalize';
 import { CssBlock } from './css-block';
+import { cssNormalize } from './css-normalize';
 
 export class CssTemplate {
     static async load(path: string, encoding?: BufferEncoding): Promise<CssTemplate> {
@@ -31,6 +31,9 @@ export class CssTemplate {
     }
     
     private _blocks: CssBlock[];
+    get blocks(): CssBlock[] {
+        return this._blocks;
+    }
 
     constructor(blocks: CssBlock[]) {
         this._blocks = blocks;

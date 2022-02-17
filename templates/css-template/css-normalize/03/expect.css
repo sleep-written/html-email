@@ -1,0 +1,24 @@
+.main {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.main > div {
+    width: 100%;
+}
+
+button {
+    font-weight: 500;
+    padding: 0.25rem;
+}
+
+button > * {
+    margin-left: 0.25rem;
+}
+
+button > *:first-child {
+    margin-left: unset;
+}

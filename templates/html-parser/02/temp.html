@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Documento N° {{ corr }} modificado</title>
+    </head>
+    <body>
+        <h2>Sr/a {{ createdBy.name }}:</h2>
+        <p>
+            El documento N° {{ corr }} con estado <strong>{{ status.cod }}</strong> ha sido modificado
+            por el usuario "{{ editedBy.name }}". Si tiene dudas sobre el movimiento realizado, pinche
+            en <a href="https://www.test.com/dcto/{{ hash }}">este enlace.</a>
+        </p>
+    </body>
+</html>

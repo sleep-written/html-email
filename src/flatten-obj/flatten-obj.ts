@@ -3,7 +3,7 @@ import { Flat, Literal, Primitive } from './interfaces';
 export function flattenObj(o: Literal): Flat[] {
     const out: Flat[] = [];
     Object
-        .keys(o)
+        .keys(o ?? {})
         .forEach(k => {
             const base = o[k];
             if (base && typeof base === 'object') {

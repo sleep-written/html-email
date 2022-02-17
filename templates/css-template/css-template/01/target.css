@@ -1,0 +1,15 @@
+button {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+    button > * {
+        font-weight: 400;
+        margin-left: 0.5rem;
+    }
+
+    button > *:first-child {
+        margin-left: unset;
+    }

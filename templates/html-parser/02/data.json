@@ -1,0 +1,16 @@
+{
+    "corr": 5555,
+    "hash": "AAAA777",
+    "status": {
+        "id": 6,
+        "cod": "ACTIVE"
+    },
+    "createdBy": {
+        "id": 678,
+        "name": "SleepWritten"
+    },
+    "editedBy": {
+        "id": 845,
+        "name": "Willyrexfan777"
+    }
+}

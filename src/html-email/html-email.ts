@@ -5,12 +5,12 @@ import * as htmlParser from 'node-html-parser';
 import { CssTemplate } from '../css-template';
 import { flattenObj, Literal } from '../flatten-obj';
 
-export class HtmlTemplate<T extends Literal> {
+export class HtmlEmail<T extends Literal> {
     static async load<T extends Literal>(
         path: string,
         encoding?: BufferEncoding
-    ): Promise<HtmlTemplate<T>> {
-        const o = new HtmlTemplate<T>(path, encoding);
+    ): Promise<HtmlEmail<T>> {
+        const o = new HtmlEmail<T>(path, encoding);
         await o._load();
         return o;
     }

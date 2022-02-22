@@ -1,12 +1,12 @@
 import { assert } from 'chai';
 import { readFile } from 'fs/promises';
-import { HtmlTemplate } from './html-template';
+import { HtmlEmail } from './html-email';
 
 async function execute(index: number): Promise<void> {
     const num = index.toString(10).padStart(2, '0');
     const url = `./templates/html-parser/${num}/`;
 
-    const temp = await HtmlTemplate.load(url + 'temp.html', 'utf-8');
+    const temp = await HtmlEmail.load(url + 'temp.html', 'utf-8');
     const data = JSON.parse(await readFile(url + 'data.json', temp.encoding));
 
     const spec = await readFile(url + 'spec.html', temp.encoding);
@@ -14,7 +14,7 @@ async function execute(index: number): Promise<void> {
     assert.strictEqual(resp, spec);
 }
 
-describe('Testing "./html-template"', () => {
+describe('Testing "./html-email"', () => {
     it('Template 01', async () => {
         await execute(1);
     });

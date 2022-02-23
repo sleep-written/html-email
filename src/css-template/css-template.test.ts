@@ -15,7 +15,7 @@ async function execute(index: number): Promise<void> {
     const temp = await CssTemplate.load(`${url}/target.css`);
     const html = htmlParser.parse(targHtml);
 
-    temp.apply(html);
+    temp.applyInline(html);
     const resp = html.toString();
     assert.strictEqual(resp, specHtml);
 }

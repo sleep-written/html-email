@@ -1,2 +1,2 @@
 export * from './css-template';
-export * from './html-email';
+export * from './html-template';

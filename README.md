@@ -1,4 +1,4 @@
-# html-email
+# html-ng-temp
 
 Parses HTML for email like if is Angular templates, and apply CSS as inline styles in it.
 
@@ -6,7 +6,7 @@ Parses HTML for email like if is Angular templates, and apply CSS as inline styl
 
 Add this package as local dependency:
 ```bash
-npm i --save html-email
+npm i --save html-ng-temp
 ```
 
 ## How to use
@@ -95,12 +95,12 @@ Replace the dynamic data with wildcards using this format: `{{ variableName }}`,
 
 Now in your progran you only need to load the html file, and give the dynamic data to the `parse` method:
 ```ts
-import { HtmlEmail } from 'html-email';
+import { HtmlTemplate } from 'html-ng-temp';
 import { TemplateData } from './template-data';
 
 export async function sendEmail(): Promise<void> {
     // Read the HTML template
-    const temp = await HtmlEmail.load<TemplateData>('./template-01.html');
+    const temp = await HtmlTemplate.load<TemplateData>('./template-01.html');
 
     // Parse the data
     const html = temp.parse({
@@ -188,7 +188,3 @@ You can use `n` CSS files as you needs, for example:
     </body>
 </html>
 ```
-
-## Roadmap
-- Add support to arrays.
-- Download CSS if are external links.

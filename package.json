@@ -1,6 +1,6 @@
 {
-  "name": "html-email",
-  "version": "0.0.1",
+  "name": "html-ng-temp",
+  "version": "0.1.0",
   "description": "Parses HTML for email like if is Angular templates, and apply CSS as inline styles in it.",
   "main": "./dist/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sleep-written/html-email.git"
+    "url": "git+https://github.com/sleep-written/html-ng-temp.git"
   },
   "files": [
     "dist"
@@ -24,9 +24,9 @@
   "author": "sleep-written",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sleep-written/html-email/issues"
+    "url": "https://github.com/sleep-written/html-ng-temp/issues"
   },
-  "homepage": "https://github.com/sleep-written/html-email#readme",
+  "homepage": "https://github.com/sleep-written/html-ng-temp#readme",
   "dependencies": {
     "node-html-parser": "^5.2.0"
   },
